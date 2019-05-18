@@ -11,6 +11,7 @@ brew install graphviz
 brew install openblas
 brew tap homebrew/core
 brew install opencv
+
 # If building with MKLDNN
 brew install llvm
 ```
