@@ -24,4 +24,5 @@ echo "ADD_LDFLAGS += -L/usr/local/opt/openblas/lib" >> ./config.mk
 echo "ADD_LDFLAGS += -L/usr/local/lib/graphviz/" >> ./config.mk
 make -j$(sysctl -n hw.ncpu)
 ```
+* `libmxnet.so` and `libmxnet.a` resides in the `[src_root]/lib directory`.
 
