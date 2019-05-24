@@ -26,9 +26,6 @@ make -j$(sysctl -n hw.ncpu)
 ```
 * `libmxnet.so` and `libmxnet.a` resides in the `[src_root]/lib directory`.
 
-## iOS build
-https://www.jianshu.com/p/8f703c10540e
-
 ## Android build
 https://blog.csdn.net/zhu_lihua/article/details/80756133
 
