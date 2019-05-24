@@ -32,5 +32,8 @@ https://www.jianshu.com/p/8f703c10540e
 ## Android build
 https://blog.csdn.net/zhu_lihua/article/details/80756133
 
+## Windows build
+https://blog.csdn.net/u012234115/article/details/80503086
+
 ## Amalgamation
 https://github.com/apache/incubator-mxnet/tree/master/amalgamation
