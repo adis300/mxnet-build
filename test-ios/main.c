@@ -4,7 +4,9 @@
 
 int main() {
 	const char* json_str = "{}";
+	const char* err = MXGetLastError();
 	int pred = MXPredCreate(json_str, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL);
-	printf("Hello World:%d\n", pred);
+	printf("TEST:Construct pseudo model:%d\n", pred);
+	printf("TEST:Get last error:%s\n", err);
 	return 0;
 }
