@@ -2,10 +2,9 @@
 #include "c_predict_api.h"
 
 int main() {
-    const char * json_str = "{}";
-    const char * err = MXGetLastError();
-    int pred = MXPredCreate(json_str, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL);
+    int pred = MXPredCreate("{}", NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL);
+
     printf("[TEST] Construct pseudo model: %d\n", pred);
-    printf("[TEST] Get last error: %s\n", err);
+    printf("%s\n", MXGetLastError());
     return 0;
 }
