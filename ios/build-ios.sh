@@ -36,30 +36,29 @@ cd mxnet/amalgamation
 make clean
 make mxnet_predict-all.cc
 
-# 1.
+# 1. change "cblas.h" to "Accelerate/Accelerate.h"
 c1="#include <cblas.h>"
 r1="#include <Accelerate\/Accelerate.h>"
 
-# 2.
+# 2. delete "emmintrin.h"
 c2="#include <emmintrin.h>"
-r2=""
 
-# 3.
+# 3. delete "x86intrin.h" and add "execinfo.h" and "shared_mutex"
 c3="#include <x86intrin.h>"
 r3="#include <execinfo.h>
 #include <shared_mutex>"
 
-# 4.
+# 4. define MSHADOW_USE_SSE 0
 c4="#define MSHADOW_USE_SSE 1"
 r4="#define MSHADOW_USE_SSE 0"
 
-# 5. (7)
+# 5. define MSHADOW_USE_F16C 0
 c5="#ifndef MSHADOW_USE_F16C
 .*\n.*\n.*\n.*\n.*\n.*\n.*\n.*
 #endif"
 r5="#define MSHADOW_USE_F16C 0"
 
-# 6. (74)
+# 6. delete all the code in MSHADOW_USE_MKL
 c6="#if MSHADOW_USE_MKL == 0
 .*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*
 .*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*
@@ -70,17 +69,16 @@ c6="#if MSHADOW_USE_MKL == 0
 .*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*
 .*\n.*\n.*
 #endif  \/\/ MSHADOW_USE_MKL == 0"
-r6=""
 
 # modify mxnet_predict-all.cc
 echo_y "modify mxnet_predict-all.cc"
 cat mxnet_predict-all.cc \
-    | perl -0pe "s/${c1}/${r1}/"   \
-    | perl -0pe "s/${c2}/${r2}/"   \
-    | perl -0pe "s/${c3}/${r3}/"   \
-    | perl -0pe "s/${c4}/${r4}/"   \
-    | perl -0pe "s/${c5}/${r5}/"   \
-    | perl -0pe "s/${c6}/${r6}/"   \
+    | perl -0pe "s/${c1}/${r1}/"  \
+    | perl -0pe "s/${c2}//"       \
+    | perl -0pe "s/${c3}/${r3}/"  \
+    | perl -0pe "s/${c4}/${r4}/"  \
+    | perl -0pe "s/${c5}/${r5}/"  \
+    | perl -0pe "s/${c6}//"       \
     > tmp.cc
 
 # overwite mxnet_predict-all.cc
