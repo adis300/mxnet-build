@@ -110,3 +110,11 @@ do
 
     mv "Release-$SDK" "$root/ios/dist/$SDK"
 done
+
+# merge universal library
+cd ..
+echo_y "[lipo] merge universal libmxnet_predict.a"
+mkdir -p dist/universal
+lipo -create dist/iphoneos/libmxnet_predict.a        \
+             dist/iphonesimulator/libmxnet_predict.a \
+     -output dist/universal/libmxnet_predict.a
